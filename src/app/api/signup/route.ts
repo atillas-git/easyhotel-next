@@ -9,7 +9,7 @@ type SignUp = {
     sex:string;
     country:string;
 }
-async function POST(req:Request) {
+export async function POST(req:Request) {
     try {
         const body = await req.json() as SignUp
         const user2search = await Employee.findOne({

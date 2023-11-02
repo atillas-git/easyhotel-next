@@ -1,5 +1,6 @@
 'use client'
 import { Button, Checkbox, Input } from '@nextui-org/react'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 const SignIn = () => {
@@ -34,9 +35,13 @@ const SignIn = () => {
             return;
         }
         setIsLoading(true)
-        setTimeout(()=>{
-            setIsLoading(false)
-        },5000)
+        signIn("credentials",{
+            email:email.value,
+            password:password.value,
+            callbackUrl:"/dashboard"
+        }).finally(()=>{
+            setIsLoading(false);
+        })
     }
 
     function clearError(){
