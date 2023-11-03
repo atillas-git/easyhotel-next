@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 async function connect() {
-    try {
-        await mongoose.connect(process.env.MONGO_URL || "")
-    } catch (error) {
-        console.log(error)
-    }
+  try {
+    await mongoose.connect(process.env.MONGO_URL || "");
+  } catch (error) {
+    console.log(error);
+  }
 }
-connect()
+connect();
 export default mongoose;
